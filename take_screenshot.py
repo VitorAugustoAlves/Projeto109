@@ -48,15 +48,14 @@ while True:
             if all(finger_fold_status):
                 
                 # ESCREVA O CÓDIGO AQUI  
+                image = pyautogui.screenshot()
+                image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+                cv2.imwrite("im_memory_to_disk.png", image)
 
-            image = pyautogui.screnshot()
-            image = cv2.cvtColor(np.array(image), cv2.Color_RGB2BGR)
-            cv2.imwrite("im_memory_to_disk.png", image)
+                pyautogui.screnshot("straight_to_disk.png")
 
-            pyautogui.screnshot("straight_to_disk.png")
-
-            image = cv2.imread("straight_to_disk")
-            cv2.imshow("Captura de Tela", imutils.imread(image, width = 600))
+                image = cv2.imread("straight_to_disk")
+                cv2.imshow("Captura de Tela", imutils.imread(image, width = 600))
 
             mp_draw.draw_landmarks(img, hand_landmark,
             mp_hands.HAND_CONNECTIONS, mp_draw.DrawingSpec((0,0,255),2,2),
